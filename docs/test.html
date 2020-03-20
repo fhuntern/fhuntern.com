@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html>
+<title>US Citizenship Civics Questions</title>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        a {
+            text-decoration: none;
+            color: #053e69;
+        }
+
+        body {
+            font-family: source_sans_pro_regular, "Source Sans Pro", Arial, sans-serif;
+            font-size: 18px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10%;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .questions li {
+            display: none;
+            padding: 30px 0 30px 0;
+        }
+
+        li.visible {
+            display: block;
+        }
+
+        .question {
+            font-size: 21px;
+        }
+
+        .answer {
+            display: none;
+        }
+
+        .answer.visible {
+            display: block;
+        }
+
+        .show-answer,
+        .next {
+            text-align: center;
+        }
+
+        .show-answer {
+            padding: 15px 0;
+            margin-left: 20px;
+        }
+
+        .next {
+            background-color: #053e69;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 3px;
+        }
+
+        p {
+            color: #053e69;
+            position: relative;
+            padding: 15px 20px;
+            border-radius: 3px;
+            margin: 10px;
+            background: #eaf2f9;
+        }
+
+        .nav li {
+            display: inline-block;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            font-size: 12px;
+            padding: 5px;
+        }
+    </style>
+    <script>
+        let seenQuestions = [];
+        window.addEventListener('DOMContentLoaded', () => {
+            next();
+            document.querySelector('.next').addEventListener('click', (e) => {
+                e.preventDefault();
+                next();
+            });
+            document.querySelector('.show-answer').addEventListener('click', (e) => {
+                e.preventDefault();
+                showAnswer();
+            });
+        });
+
+        const getRandomQuestion = () => {
+            if (seenQuestions.length >= 100) {
+                alert("Test Completed");
+                seenQuestions = [];
+            }
+            const rand = Math.floor(Math.random() * 100) + 1;
+            if (seenQuestions.includes(rand)) {
+                return getRandomQuestion();
+            }
+            seenQuestions.push(rand);
+            return rand;
+        };
+
+        const next = () => {
+            document.querySelectorAll('.questions li').forEach((el) => {
+                el.classList.remove('visible');
+                el.querySelector('.answer').classList.remove('visible');
+            });
+            document.querySelector(`li:nth-child(${getRandomQuestion()})`).classList.add('visible');
+        };
+
+        const showAnswer = () => {
+            document.querySelectorAll('.questions li').forEach((el) => {
+                if (el.classList.contains('visible')) {
+                    el.querySelector('.answer').classList.add('visible');
+                }
+            })
+        };
+    </script>
+</head>
+<body>
+<ul class="nav">
+    <li><a class="next" href="#">Next</a></li>
+    <li><a class="show-answer" href="#">Show answer</a></li>
+</ul>
+<ul class="questions">
+    <li>
+        <div class="question">1. What is the supreme law of the land?</div>
+        <div class="answer">the Constitution</div>
+    </li>
+    <li>
+        <div class="question">2. What does the Constitution do?</div>
+        <div class="answer">
+            <p>sets up the government
+            </p><p>defines the government
+            </p><p>protects basic rights of Americans
+        </p></div>
+    </li>
+    <li>
+        <div class="question">3. The idea of self-government is in the first three words of the Constitution. What are
+            these words?
+        </div>
+        <div class="answer"><p>We the People</p></div>
+    </li>
+    <li>
+        <div class="question">4. What is an amendment?</div>
+        <div class="answer"><p>a change (to the Constitution)
+            </p><p>an addition (to the Constitution)
+        </p></div>
+    </li>
+    <li>
+        <div class="question">5. What do we call the first ten amendments to the Constitution?</div>
+        <div class="answer"><p>the Bill of Rights</p></div>
+    </li>
+    <li>
+        <div class="question">6. What is one right or freedom from the First Amendment?*</div>
+        <div class="answer">
+            <p>speech
+            </p><p>religion
+            </p><p>assembly
+            </p><p>press
+            </p><p>petition the government
+        </p></div>
+    </li>
+    <li>
+        <div class="question">7. How many amendments does the Constitution have?</div>
+        <div class="answer"><p>twenty-seven (27)</p></div>
+    </li>
+    <li>
+        <div class="question">
+            8. What did the Declaration of Independence do?
+        </div>
+        <div class="answer">
+            <p>announced our independence (from Great Britain)
+            </p><p>declared our independence (from Great Britain)
+            </p><p>said that the United States is free (from Great Britain)
+        </p></div>
+    </li>
+    <li>
+        <div class="question">9. What are two rights in the Declaration of Independence?</div>
+        <div class="answer"><p>life
+            </p><p>liberty
+            </p><p>pursuit of happiness
+        </p></div>
+    </li>
+    <li>
+        <div class="question">10. What is freedom of religion?</div>
+        <div class="answer"><p>You can practice any religion, or not practice a religion.</p></div>
+    </li>
+    <li>
+        <div class="question">11. What is the economic system in the United States?*</div>
+        <div class="answer">
+            <p>capitalist economy
+            </p><p>market economy
+        </p></div>
+    </li>
+    <li>
+        <div class="question">12. What is the “rule of law”?</div>
+        <div class="answer">
+            <p>Everyone must follow the law.
+            </p><p>Leaders must obey the law.
+            </p><p>Government must obey the law.
+            </p><p>No one is above the law.
+        </p></div>
+    </li>
+    <li>
+        <div class="question">
+            13. Name one branch or part of the government.*
+        </div>
+        <div class="answer"><p>Congress
+            </p><p>legislative
+            </p><p>President
+            </p><p>executive
+            </p><p>the courts
+            </p><p>judicial
+        </p></div>
+    </li>
+    <li>
+        <div class="question">14. What stops one branch of government from becoming too powerful?</div>
+        <div class="answer">
+            <p>checks and balances
+            </p><p>separation of powers
+        </p></div>
+    </li>
+    <li>
+        <div class="question">15. Who is in charge of the executive branch?</div>
+        <div class="answer"><p>the President</p></div>
+    </li>
+    <li>
+        <div class="question">16. Who makes federal laws?</div>
+        <div class="answer"><p>Congress
+            </p><p>Senate and House (of Representatives)
+            </p><p>(U.S. or national) legislature
+        </p></div>
+    </li>
+    <li>
+        <div class="question">17. What are the two parts of the U.S. Congress?*</div>
+        <div class="answer"><p>the Senate and House (of Representatives)</p></div>
+    </li>
+    <li>
+        <div class="question">18. How many U.S. Senators are there?</div>
+        <div class="answer"><p>one hundred (100)</p></div>
+    </li>
+    <li>
+        <div class="question">19. We elect a U.S. Senator for how many years?</div>
+        <div class="answer"><p>six (6)</p></div>
+    </li>
+    <li>
+        <div class="question">20. Who is one of your state’s U.S. Senators now?*</div>
+        <div class="answer"><p>Answers will vary. [District of Columbia residents and residents of U.S. territories
+            should answer that D.C.
+            (or the territory where the applicant lives) has no U.S. Senators.]
+        </p></div>
+    </li>
+    <li>
+        <div class="question">21. The House of Representatives has how many voting members?</div>
+        <div class="answer"><p>four hundred thirty-five (435)</p></div>
+    </li>
+    <li>
+        <div class="question">22. We elect a U.S. Representative for how many years?</div>
+        <div class="answer"><p>two (2)</p></div>
+    </li>
+    <li>
+        <div class="question">23. Name your U.S. Representative.</div>
+        <div class="answer"><p>Answers will vary. [Residents of territories with nonvoting Delegates or Resident
+            Commissioners may
+            provide the name of that Delegate or Commissioner. Also acceptable is any statement that the territory has
+            no (voting) Representatives in Congress.]
+        </p></div>
+    </li>
+    <li>
+        <div class="question">24. Who does a U.S. Senator represent?</div>
+        <div class="answer"><p>all people of the state</p></div>
+    </li>
+    <li>
+        <div class="question">25. Why do some states have more Representatives than other states?</div>
+        <div class="answer"><p>(because of) the state’s population
+            </p><p>(because) they have more people
+            </p><p>(because) some states have more people
+        </p></div>
+    </li>
+    <li>
+        <div class="question">26. We elect a President for how many years?</div>
+        <div class="answer"><p>four (4)</p></div>
+    </li>
+    <li>
+        <div class="question">27. In what month do we vote for President?*</div>
+        <div class="answer"><p>November</p></div>
+    </li>
+    <li>
+        <div class="question">28. What is the name of the President of the United States now?*</div>
+        <div class="answer"><p>Visit uscis.gov/citizenship/testupdates for the name of the President of the United
+            States.
+        </p></div>
+    </li>
+    <li>
+        <div class="question">29. What is the name of the Vice President of the United States now?</div>
+        <div class="answer"><p>Visit uscis.gov/citizenship/testupdates for the name of the Vice President of the United
+            States.
+        </p></div>
+    </li>
+    <li>
+        <div class="question">30. If the President can no longer serve, who becomes President?</div>
+        <div class="answer"><p>the Vice President</p></div>
+    </li>
+    <li>
+        <div class="question">31. If both the President and the Vice President can no longer serve, who becomes
+            President?
+        </div>
+        <div class="answer"><p>the Speaker of the House</p></div>
+    </li>
+    <li>
+        <div class="question">32. Who is the Commander in Chief of the military?</div>
+        <div class="answer"><p>the President</p></div>
+    </li>
+    <li>
+        <div class="question">
+            33. Who signs bills to become laws?
+        </div>
+        <div class="answer"><p>the President</p></div>
+    </li>
+    <li>
+        <div class="question">34. Who vetoes bills?</div>
+        <div class="answer"><p>the President</p></div>
+    </li>
+    <li>
+        <div class="question">35. What does the President’s Cabinet do?
+        </div>
+        <div class="answer"><p>advises the President</p></div>
+    </li>
+    <li>
+        <div class="question">
+            36. What are two Cabinet-level positions?
+        </div>
+        <div class="answer"><p>Secretary of Agriculture
+            </p><p>Secretary of Commerce
+            </p><p>Secretary of Defense
+            </p><p>Secretary of Education
+            </p><p>Secretary of Energy
+            </p><p>Secretary of Health and Human Services
+            </p><p>Secretary of Homeland Security
+            </p><p>Secretary of Housing and Urban Development
+            </p><p>Secretary of the Interior
+            </p><p>Secretary of Labor
+            </p><p>Secretary of State
+            </p><p>Secretary of Transportation
+            </p><p>Secretary of the Treasury
+            </p><p>Secretary of Veterans Affairs
+            </p><p>Attorney General
+            </p><p>Vice President
+        </p></div>
+    </li>
+    <li>
+        <div class="question">37. What does the judicial branch do?</div>
+        <div class="answer"><p>reviews laws
+            </p><p>explains laws
+            </p><p>resolves disputes (disagreements)
+            </p><p>decides if a law goes against the Constitution
+        </p></div>
+    </li>
+    <li>
+        <div class="question">38. What is the highest court in the United States?</div>
+        <div class="answer"><p>the Supreme Court</p></div>
+    </li>
+    <li>
+        <div class="question">39. How many justices are on the Supreme Court?</div>
+        <div class="answer"><p>Visit uscis.gov/citizenship/testupdates for the number of justices on the Supreme Court.
+        </p></div>
+    </li>
+    <li>
+        <div class="question">40. Who is the Chief Justice of the United States now?</div>
+        <div class="answer"><p>Visit uscis.gov/citizenship/testupdates for the name of the Chief Justice of the United
+            States.
+        </p></div>
+    </li>
+    <li>
+        <div class="question">41. Under our Constitution, some powers belong to the federal government. What is one
+            power of the federal
+            government?
+        </div>
+        <div class="answer"><p>to print money
+            </p><p>to declare war
+            </p><p>to create an army
+            </p><p>to make treaties
+        </p></div>
+    </li>
+    <li>
+        <div class="question">42. Under our Constitution, some powers belong to the states. What is one power of the
+            states?
+        </div>
+        <div class="answer"><p>provide schooling and education
+            </p><p>provide protection (police)
+            </p><p>provide safety (fire departments)
+            </p><p>give a driver’s license
+            </p><p>approve zoning and land use
+        </p></div>
+    </li>
+    <li>
+        <div class="question">
+            43. Who is the Governor of your state now?
+        </div>
+        <div class="answer"><p>Answers will vary. [District of Columbia residents should answer that D.C. does not have a
+            Governor.]
+        </p></div>
+    </li>
+    <li>
+        <div class="question">44. What is the capital of your state?*</div>
+        <div class="answer"><p>Answers will vary. [District of Columbia residents should answer that D.C. is not a state
+            and does not have a
+            capital. Residents of U.S. territories should name the capital of the territory.]
+        </p></div>
+    </li>
+    <li>
+        <div class="question">45. What are the two major political parties in the United States?*</div>
+        <div class="answer"><p>Democratic and Republican</p></div>
+    </li>
+    <li>
+        <div class="question">46. What is the political party of the President now?</div>
+        <div class="answer"><p>Visit uscis.gov/citizenship/testupdates for the political party of the President.</p></div>
+    </li>
+    <li>
+        <div class="question">47. What is the name of the Speaker of the House of Representatives now?</div>
+        <div class="answer"><p>Visit uscis.gov/citizenship/testupdates for the name of the Speaker of the House of
+            Representatives.
+        </p></div>
+    </li>
+    <li>
+        <div class="question">
+            48. There are four amendments to the Constitution about who can vote. Describe one of them.
+        </div>
+        <div class="answer"><p>Citizens eighteen (18) and older (can vote).
+            </p><p>You don’t have to pay (a poll tax) to vote.
+            </p><p>Any citizen can vote. (Women and men can vote.)
+            </p><p>A male citizen of any race (can vote).
+        </p></div>
+    </li>
+    <li>
+        <div class="question">49. What is one responsibility that is only for United States citizens?*</div>
+        <div class="answer"><p>serve on a jury
+            </p><p>vote in a federal election
+        </p></div>
+    </li>
+    <li>
+        <div class="question">50. Name one right only for United States citizens.</div>
+        <div class="answer"><p>vote in a federal election
+            </p><p>run for federal office
+        </p></div>
+    </li>
+    <li>
+        <div class="question">51. What are two rights of everyone living in the United States?</div>
+        <div class="answer"><p>freedom of expression
+            </p><p>freedom of speech
+            </p><p>freedom of assembly
+            </p><p>freedom to petition the government
+            </p><p>freedom of religion
+            </p><p>the right to bear arms
+        </p></div>
+    </li>
+    <li>
+        <div class="question">52. What do we show loyalty to when we say the Pledge of Allegiance?</div>
+        <div class="answer"><p>the United States
+            </p><p>the flag
+        </p></div>
+    </li>
+    <li>
+        <div class="question">53. What is one promise you make when you become a United States citizen?</div>
+        <div class="answer"><p>give up loyalty to other countries
+            </p><p>defend the Constitution and laws of the United States
+            </p><p>obey the laws of the United States
+            </p><p>serve in the U.S. military (if needed)
+            </p><p>serve (do important work for) the nation (if needed)
+            </p><p>be loyal to the United States
+        </p></div>
+    </li>
+    <li>
+        <div class="question">
+            54. How old do citizens have to be to vote for President?*
+        </div>
+        <div class="answer"><p>eighteen (18) and older</p></div>
+    </li>
+    <li>
+        <div class="question">55. What are two ways that Americans can participate in their democracy?</div>
+        <div class="answer"><p>vote
+            </p><p>join a political party
+            </p><p>help with a campaign
+            </p><p>join a civic group
+            </p><p>join a community group
+            </p><p>give an elected official your opinion on an issue
+            </p><p>call Senators and Representatives
+            </p><p>publicly support or oppose an issue or policy
+            </p><p>run for office
+            </p><p>write to a newspaper
+        </p></div>
+    </li>
+    <li>
+        <div class="question">56. When is the last day you can send in federal income tax forms?*</div>
+        <div class="answer"><p>April 15</p></div>
+    </li>
+    <li>
+        <div class="question">
+            57. When must all men register for the Selective Service?
+        </div>
+        <div class="answer"><p>at age eighteen (18)
+            </p><p>between eighteen (18) and twenty-six (26)
+        </p></div>
+    </li>
+    <li>
+        <div class="question">
+            58. What is one reason colonists came to America?
+        </div>
+        <div class="answer"><p>freedom
+            </p><p>political liberty
+            </p><p>religious freedom
+            </p><p>economic opportunity
+            </p><p>practice their religion
+            </p><p>escape persecution
+        </p></div>
+    </li>
+    <li>
+        <div class="question">59. Who lived in America before the Europeans arrived?</div>
+        <div class="answer"><p>American Indians
+            </p><p>Native Americans
+        </p></div>
+    </li>
+    <li>
+        <div class="question">60. What group of people was taken to America and sold as slaves?</div>
+        <div class="answer"><p>Africans
+            </p><p>people from Africa
+        </p></div>
+    </li>
+    <li>
+        <div class="question">61. Why did the colonists fight the British?</div>
+        <div class="answer"><p>because of high taxes (taxation without representation)
+            </p><p>because the British army stayed in their houses (boarding, quartering)
+            </p><p>because they didn’t have self-government
+        </p></div>
+    </li>
+    <li>
+        <div class="question">
+            62. Who wrote the Declaration of Independence?
+        </div>
+        <div class="answer"><p>(Thomas) Jefferson</p></div>
+    </li>
+    <li>
+        <div class="question">63. When was the Declaration of Independence adopted?</div>
+        <div class="answer"><p>July 4, 1776</p></div>
+    </li>
+    <li>
+        <div class="question">64. There were 13 original states. Name three.</div>
+        <div class="answer"><p>New Hampshire
+            </p><p>Massachusetts
+            </p><p>Rhode Island
+            </p><p>Connecticut
+            </p><p>New York
+            </p><p>New Jersey
+            </p><p>Pennsylvania
+            </p><p>Delaware
+            </p><p>Maryland
+            </p><p>Virginia
+            </p><p>North Carolina
+            </p><p>South Carolina
+            </p><p>Georgia
+        </p></div>
+    </li>
+    <li>
+        <div class="question">65. What happened at the Constitutional Convention?</div>
+        <div class="answer"><p>The Constitution was written.
+            </p><p>The Founding Fathers wrote the Constitution.
+        </p></div>
+    </li>
+    <li>
+        <div class="question">66. When was the Constitution written?</div>
+        <div class="answer"><p>1787</p></div>
+    </li>
+    <li>
+        <div class="question">67. The Federalist Papers supported the passage of the U.S. Constitution. Name one of the
+            writers.
+        </div>
+        <div class="answer"><p>(James) Madison
+            </p><p>(Alexander) Hamilton
+            </p><p>(John) Jay
+            </p><p>Publius
+        </p></div>
+    </li>
+    <li>
+        <div class="question">68. What is one thing Benjamin Franklin is famous for?</div>
+        <div class="answer"><p>U.S. diplomat
+            </p><p>oldest member of the Constitutional Convention
+            </p><p>first Postmaster General of the United States
+            </p><p>writer of </p>“Poor Richard’s Almanac”
+            <p>started the first free libraries
+        </p></div>
+    </li>
+    <li>
+        <div class="question">69. Who is the “Father of Our Country”?</div>
+        <div class="answer"><p>(George) Washington</p></div>
+    </li>
+    <li>
+        <div class="question">70. Who was the first President?*</div>
+        <div class="answer"><p>(George) Washington</p></div>
+    </li>
+    <li>
+        <div class="question">
+            71. What territory did the United States buy from France in 1803?
+        </div>
+        <div class="answer"><p>the Louisiana Territory
+            </p><p>Louisiana
+        </p></div>
+    </li>
+    <li>
+        <div class="question">72. Name one war fought by the United States in the 1800s.</div>
+        <div class="answer"><p>War of 1812
+            </p><p>Mexican-American War
+            </p><p>Civil War
+            </p><p>Spanish-American War
+        </p></div>
+    </li>
+    <li>
+        <div class="question">73. Name the U.S. war between the North and the South.</div>
+        <div class="answer"><p>the Civil War
+            </p><p>the War between the States
+        </p></div>
+    </li>
+    <li>
+        <div class="question">74. Name one problem that led to the Civil War.</div>
+        <div class="answer"><p>slavery
+            </p><p>economic reasons
+            </p><p>states’ rights
+        </p></div>
+    </li>
+    <li>
+        <div class="question">75. What was one important thing that Abraham Lincoln did?*</div>
+        <div class="answer"><p>freed the slaves (Emancipation Proclamation)
+            </p><p>saved (or preserved) the Union
+            </p><p>led the United States during the Civil War
+        </p></div>
+    </li>
+    <li>
+        <div class="question">76. What did the Emancipation Proclamation do?</div>
+        <div class="answer">
+            <p>freed the slaves
+            </p><p>freed slaves in the Confederacy
+            </p><p>freed slaves in the Confederate states
+            </p><p>freed slaves in most Southern states
+        </p></div>
+    </li>
+    <li>
+        <div class="question">77. What did Susan B. Anthony do?</div>
+        <div class="answer">
+            <p>fought for women’s rights
+            </p><p>fought for civil rights
+        </p></div>
+    </li>
+    <li>
+        <div class="question">
+            78. Name one war fought by the United States in the 1900s.*
+        </div>
+        <div class="answer"><p>World War I
+            </p><p>World War II
+            </p><p>Korean War
+            </p><p>Vietnam War
+            </p><p>(Persian) Gulf War
+        </p></div>
+    </li>
+    <li>
+        <div class="question">79. Who was President during World War I?</div>
+        <div class="answer"><p>(Woodrow) Wilson</p></div>
+    </li>
+    <li>
+        <div class="question">80. Who was President during the Great Depression and World War II?</div>
+        <div class="answer"><p>(Franklin) Roosevelt</p></div>
+    </li>
+    <li>
+        <div class="question">
+            81. Who did the United States fight in World War II?
+        </div>
+        <div class="answer"><p>Japan, Germany, and Italy</p></div>
+    </li>
+    <li>
+        <div class="question">
+            82. Before he was President, Eisenhower was a general. What war was he in?
+        </div>
+        <div class="answer"><p>World War II</p></div>
+    </li>
+    <li>
+        <div class="question">83. During the Cold War, what was the main concern of the United States?</div>
+        <div class="answer"><p>Communism</p></div>
+    </li>
+    <li>
+        <div class="question">84. What movement tried to end racial discrimination?</div>
+        <div class="answer"><p>civil rights (movement)</p></div>
+    </li>
+    <li>
+        <div class="question">85. What did Martin Luther King, Jr. do?*</div>
+        <div class="answer"><p>fought for civil rights
+            </p><p>worked for equality for all Americans
+        </p></div>
+    </li>
+    <li>
+        <div class="question">
+            86. What major event happened on September 11, 2001, in the United States?
+        </div>
+        <div class="answer"><p>Terrorists attacked the United States.</p></div>
+    </li>
+    <li>
+        <div class="question">87. Name one American Indian tribe in the United States.</div>
+        <div class="answer"><p>Cherokee
+            </p><p>Navajo
+            </p><p>Sioux
+            </p><p>Chippewa
+            </p><p>Choctaw
+            </p><p>Pueblo
+            </p><p>Apache
+            </p><p>Iroquois
+            </p><p>Creek
+            </p><p>Blackfeet
+            </p><p>Seminole
+            </p><p>Cheyenne
+            </p><p>Arawak
+            </p><p>Shawnee
+            </p><p>Mohegan
+            </p><p>Huron
+            </p><p>Oneida
+            </p><p>Lakota
+            </p><p>Crow
+            </p><p>Teton
+            </p><p>Hopi
+            </p><p>Inuit
+        </p></div>
+    </li>
+    <li>
+        <div class="question">
+            88. Name one of the two longest rivers in the United States.
+        </div>
+        <div class="answer"><p>Missouri (River)
+            </p><p>Mississippi (River)
+        </p></div>
+    </li>
+    <li>
+        <div class="question">89. What ocean is on the West Coast of the United States?</div>
+        <div class="answer"><p>Pacific (Ocean)</p></div>
+    </li>
+    <li>
+        <div class="question">90. What ocean is on the East Coast of the United States?</div>
+        <div class="answer"><p>Atlantic (Ocean)</p></div>
+    </li>
+    <li>
+        <div class="question">91. Name one U.S. territory.</div>
+        <div class="answer"><p>Puerto Rico
+            </p><p>U.S. Virgin Islands
+            </p><p>American Samoa
+            </p><p>Northern Mariana Islands
+            </p><p>Guam
+        </p></div>
+    </li>
+    <li>
+        <div class="question">92. Name one state that borders Canada.</div>
+        <div class="answer"><p>Maine
+            </p><p>New Hampshire
+            </p><p>Vermont
+            </p><p>New York
+            </p><p>Pennsylvania
+            </p><p>Ohio
+            </p><p>Michigan
+            </p><p>Minnesota
+            </p><p>North Dakota
+            </p><p>Montana
+            </p><p>Idaho
+            </p><p>Washington
+            </p><p>Alaska
+        </p></div>
+    </li>
+    <li>
+        <div class="question">93. Name one state that borders Mexico.</div>
+        <div class="answer"><p>California
+            </p><p>Arizona
+            </p><p>New Mexico
+            </p><p>Texas
+        </p></div>
+    </li>
+    <li>
+        <div class="question">94. What is the capital of the United States?*</div>
+        <div class="answer"><p>Washington, D.C.</p></div>
+    </li>
+    <li>
+        <div class="question">95. Where is the Statue of Liberty?*</div>
+        <div class="answer"><p>New York (Harbor)
+            </p><p>Liberty Island
+            [Also acceptable are New Jersey, near New York City, and on the Hudson (River).]
+        </p></div>
+    </li>
+    <li>
+        <div class="question">
+            96. Why does the flag have 13 stripes?
+        </div>
+        <div class="answer"><p>because there were 13 original colonies
+            </p><p>because the stripes represent the original colonies
+        </p></div>
+    </li>
+    <li>
+        <div class="question">97. Why does the flag have 50 stars?*</div>
+        <div class="answer"><p>because there is one star for each state
+            </p><p>because each star represents a state
+            </p><p>because there are 50 states
+        </p></div>
+    </li>
+    <li>
+        <div class="question">98. What is the name of the national anthem?</div>
+        <div class="answer"><p>The Star-Spangled Banner</p></div>
+    </li>
+    <li>
+        <div class="question">
+            99. When do we celebrate Independence Day?*
+        </div>
+        <div class="answer"><p>July 4</p></div>
+    </li>
+    <li>
+        <div class="question">100. Name two national U.S. holidays.</div>
+        <div class="answer"><p>New Year’s Day
+            </p><p>Martin Luther King, Jr. Day
+            </p><p>Presidents’ Day
+            </p><p>Memorial Day
+            </p><p>Independence Day
+            </p><p>Labor Day
+            </p><p>Columbus Day
+            </p><p>Veterans Day
+            </p><p>Thanksgiving
+            </p><p>Christmas
+        </p></div>
+    </li>
+</ul>
+<footer>
+    I scraped this from the USCIS website to help me study. <a href="https://www.uscis.gov/citizenship/educators/educational-products/100-civics-questions-and-answers-mp3-audio-english-version" target="_blank">See the original here.</a>
+</footer>
+</body>
+</html>
